@@ -509,10 +509,14 @@ class Button extends Entity
     /**
      * Set the value of Silent mode as boolean
      * @param bool $silent
+     *
+     * @return self
      */
-    public function setSilent(bool $silent)
+    public function setSilent($silent)
     {
         $this->Silent = $silent;
+
+        return $this;
     }
 
     /**
