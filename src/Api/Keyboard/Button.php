@@ -137,13 +137,18 @@ class Button extends Entity
      * @var string
      */
     protected $TextSize;
+    /**
+     * Allow to send Button in Silent Mode
+     * @var string
+     */
+    protected $Silent;
 
     /**
      * {@inheritDoc}
      */
     public function toArray()
     {
-        return [
+        $array = [
             'Columns' => $this->getColumns(),
             'Rows' => $this->getRows(),
             'BgColor' => $this->getBgColor(),
@@ -159,6 +164,10 @@ class Button extends Entity
             'TextOpacity' => $this->getTextOpacity(),
             'TextSize' => $this->getTextSize(),
         ];
+        if ($this->getSilent()) {
+            $array["Silent"] = $this->getSilent();
+        }
+        return $array;
     }
 
     /**
@@ -495,5 +504,23 @@ class Button extends Entity
         $this->TextSize = $TextSize;
 
         return $this;
+    }
+
+    /**
+     * Set the value of Silent mode as boolean
+     * @param bool $silent
+     */
+    public function setSilent(bool $silent)
+    {
+        $this->Silent = $silent;
+    }
+
+    /**
+     *  Get the value of Silent Mode as boolean
+     * @return string
+     */
+    public function getSilent()
+    {
+        return $this->Silent;
     }
 }
